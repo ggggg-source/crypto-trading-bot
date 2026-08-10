@@ -15,23 +15,12 @@ from aiogram.client.session.aiohttp import AiohttpSession
 
 logging.basicConfig(level=logging.INFO)
 
-# Прокси Happ
-PROXY_URL = "http://127.0.0.1:10809"
-os.environ['HTTP_PROXY'] = PROXY_URL
-os.environ['HTTPS_PROXY'] = PROXY_URL
-
-# Бронебойный прокси для aiohttp
-_original_request = aiohttp.ClientSession._request
-async def _patched_request(self, method, url, **kwargs):
-    kwargs['proxy'] = PROXY_URL
-    return await _original_request(self, method, url, **kwargs)
-aiohttp.ClientSession._request = _patched_request
 
 # ⬇️ ТВОЙ ТОКЕН ОТ BOTFATHER
-BOT_TOKEN = "YOUR_TELEGRAM_TOKEN_HERE"
+BOT_TOKEN = "-"
 # ⬇️ ТВОИ КЛЮЧИ ОТ BINANCE TESTNET
-API_KEY = "YOUR_BINANCE_API_KEY_HERE"
-API_SECRET = "YOUR_BIN"
+API_KEY = "-"
+API_SECRET = "-"
 
 BINANCE_TESTNET = "https://testnet.binance.vision"
 BINANCE_PRICE_URL = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
